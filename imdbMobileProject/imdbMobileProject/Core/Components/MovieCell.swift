@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieCell: UICollectionViewCell {
+final class MovieCell: UICollectionViewCell {
     
     static let reuseID = "MovieCell"
     
@@ -24,10 +24,22 @@ class MovieCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        posterImgaeView.image = nil
+        posterImgaeView.cancelDowloading()
+    }
+    
+    
+    func setCell(movie: MovieResults){
+        posterImgaeView.dowloadImage(movie: movie)
+    }
+    
     
     private func configureCell() {
         backgroundColor = .systemGray6
-        layer.cornerRadius = 20      //(collectionviiewcell köşe ovalliği)
+        layer.cornerRadius = 20     
         clipsToBounds = true
     }
     
@@ -38,8 +50,7 @@ class MovieCell: UICollectionViewCell {
         addSubview(posterImgaeView)
         
        
-        
-        
+    
         posterImgaeView.pinToEdgesOf(view: self)
     }
     

@@ -12,6 +12,9 @@
 		8209B3BF295200E9008B4DEF /* CGFloar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8209B3BE295200E9008B4DEF /* CGFloar+Ext.swift */; };
 		8209B3C129520748008B4DEF /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8209B3C029520748008B4DEF /* MovieCell.swift */; };
 		8209B3C3295F72C1008B4DEF /* PosterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8209B3C2295F72C1008B4DEF /* PosterImageView.swift */; };
+		8209B3C52961DEA7008B4DEF /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8209B3C42961DEA7008B4DEF /* UICollectionView+Ext.swift */; };
+		8209B3C82961FC15008B4DEF /* DetailScrenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8209B3C72961FC15008B4DEF /* DetailScrenVC.swift */; };
+		8209B3CA29621C6F008B4DEF /* DetailScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8209B3C929621C6F008B4DEF /* DetailScreenVM.swift */; };
 		8278A36E294F4FC800BE37A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278A36D294F4FC800BE37A1 /* AppDelegate.swift */; };
 		8278A370294F4FC800BE37A1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278A36F294F4FC800BE37A1 /* SceneDelegate.swift */; };
 		8278A377294F4FCB00BE37A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8278A376294F4FCB00BE37A1 /* Assets.xcassets */; };
@@ -30,6 +33,9 @@
 		8209B3BE295200E9008B4DEF /* CGFloar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloar+Ext.swift"; sourceTree = "<group>"; };
 		8209B3C029520748008B4DEF /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		8209B3C2295F72C1008B4DEF /* PosterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterImageView.swift; sourceTree = "<group>"; };
+		8209B3C42961DEA7008B4DEF /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
+		8209B3C72961FC15008B4DEF /* DetailScrenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScrenVC.swift; sourceTree = "<group>"; };
+		8209B3C929621C6F008B4DEF /* DetailScreenVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreenVM.swift; sourceTree = "<group>"; };
 		8278A36A294F4FC800BE37A1 /* imdbMobileProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imdbMobileProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8278A36D294F4FC800BE37A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8278A36F294F4FC800BE37A1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,8 +66,18 @@
 			children = (
 				8209B3B82951FA06008B4DEF /* UIView+Extansion.swift */,
 				8209B3BE295200E9008B4DEF /* CGFloar+Ext.swift */,
+				8209B3C42961DEA7008B4DEF /* UICollectionView+Ext.swift */,
 			);
 			path = Extansion;
+			sourceTree = "<group>";
+		};
+		8209B3C62961E9CA008B4DEF /* DetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8209B3C72961FC15008B4DEF /* DetailScrenVC.swift */,
+				8209B3C929621C6F008B4DEF /* DetailScreenVM.swift */,
+			);
+			path = DetailScreen;
 			sourceTree = "<group>";
 		};
 		8278A361294F4FC800BE37A1 = {
@@ -126,6 +142,7 @@
 		8278A384294F53E200BE37A1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				8209B3C62961E9CA008B4DEF /* DetailScreen */,
 				8278A386294F542800BE37A1 /* HomeVC */,
 				8278A385294F53EF00BE37A1 /* Components */,
 			);
@@ -225,14 +242,17 @@
 				8209B3C129520748008B4DEF /* MovieCell.swift in Sources */,
 				8278A38C294F550B00BE37A1 /* NetworkManeger.swift in Sources */,
 				8209B3BF295200E9008B4DEF /* CGFloar+Ext.swift in Sources */,
+				8209B3CA29621C6F008B4DEF /* DetailScreenVM.swift in Sources */,
 				8209B3BB2951FEAC008B4DEF /* UIHelper.swift in Sources */,
 				8278A38A294F54AC00BE37A1 /* HomeScrenVC.swift in Sources */,
 				8278A3942950D04400BE37A1 /* HomeViewModel.swift in Sources */,
 				8278A36E294F4FC800BE37A1 /* AppDelegate.swift in Sources */,
 				8278A3922950C3C400BE37A1 /* APIURLs.swift in Sources */,
+				8209B3C52961DEA7008B4DEF /* UICollectionView+Ext.swift in Sources */,
 				8278A370294F4FC800BE37A1 /* SceneDelegate.swift in Sources */,
 				8209B3C3295F72C1008B4DEF /* PosterImageView.swift in Sources */,
 				8278A38E294FD92B00BE37A1 /* Movie.swift in Sources */,
+				8209B3C82961FC15008B4DEF /* DetailScrenVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

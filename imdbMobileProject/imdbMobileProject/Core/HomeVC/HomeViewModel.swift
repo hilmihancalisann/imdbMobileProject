@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Metal
 
 
 protocol HomeViewModelInterface {
@@ -23,6 +24,8 @@ final class HomeViewModel {
     weak var view : HomeScreenInterface?
     private let service = MovieService()
     var movies: [MovieResults] = []
+    private var page: Int = 1
+    
 }
 
 extension HomeViewModel: HomeViewModelInterface {
@@ -36,13 +39,23 @@ extension HomeViewModel: HomeViewModelInterface {
     }
     
     func getMovies() {
-        service.downloadMovies { [weak self] returnedMovies in
+        service.downloadMovies(page: page) { [weak self] returnedMovies in
             guard let self = self else {return}
             guard let returnedMovies = returnedMovies else {return}
-            self.movies = returnedMovies
+            self.movies.append(contentsOf: returnedMovies)
           
-           
+            self.page += 1
+            self.view?.reoladedCollectionView()
             
+        }
+    }
+    
+    func getDetail(id: Int) {
+        service.dowloadDetails(id: id) { [weak self] returnDetail in
+            guard let self = self else { return }
+            guard let returnedDetail = returnDetail else { return }
+            
+            self.view?.navigateDetailScree(movie: returnedDetail)
             
         }
     }

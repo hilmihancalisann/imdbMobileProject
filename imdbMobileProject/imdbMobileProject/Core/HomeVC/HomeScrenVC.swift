@@ -12,6 +12,8 @@ protocol HomeScreenInterface: AnyObject {
     
     func configureVC()
     func configureCollectionView()
+    func reoladedCollectionView()
+    func navigateDetailScree(movie: MovieResults)
     
 }
 
@@ -37,11 +39,24 @@ final class HomeScrenVC: UIViewController {
 
 
 extension HomeScrenVC: HomeScreenInterface {
+    
+    
+    func navigateDetailScree(movie: MovieResults) {
+
+        DispatchQueue.main.async {
+            let detailScreen = DetailScrenVC(movie: movie)
+            self.navigationController?.pushViewController(detailScreen, animated: true)
+
+            
+        }
+    }
+    
    
     
     func configureVC() {
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemGreen
+        title = "Popular Movies"
     }
     
     
@@ -63,7 +78,10 @@ extension HomeScrenVC: HomeScreenInterface {
     }
     
     
-    
+    func reoladedCollectionView() {
+        
+        collectionView.reloadOnMinThread()
+    }
     
    
     
@@ -81,10 +99,27 @@ extension HomeScrenVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reuseID, for: indexPath) as! MovieCell
         
+        cell.setCell(movie: viewModel.movies[indexPath.item])
         return cell
     }
     
-
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.getDetail(id: viewModel.movies[indexPath.item]._id)    }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        let ofsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+       /* print("ofsetY: \(ofsetY)")
+        print("contentHeight: \(contentHeight)")
+        print("height: \(height)")*/
+        
+        if ofsetY >= contentHeight - (2 * height) {
+            viewModel.getMovies()
+        }
+        
+    }
 }

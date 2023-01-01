@@ -8,11 +8,11 @@
 import Foundation
 
 
-class MovieService {
+final class MovieService {
     
-    func downloadMovies(completion: @escaping ([MovieResults]?) -> ()) {
+    func downloadMovies(page: Int, completion: @escaping ([MovieResults]?) -> ()) {
         
-        guard let url = URL(string: APIURLs.movies(page: 1))
+        guard let url = URL(string: APIURLs.movies(page: page))
         else {return  }
         
         NetworkManager.shared.download(url: url) { [weak self] result in
@@ -30,6 +30,22 @@ class MovieService {
         }
     }
     
+    
+    func dowloadDetails(id: Int, completion: @escaping (MovieResults?) -> ()) {
+        
+        guard let url = URL(string: APIURLs.details(id: id)) else { return }
+        
+        NetworkManager.shared.download(url: url) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case.success(let data):
+                completion(self.handleWithError(data))
+            case.failure(let error):
+                self.handleWithError(error)
+            }
+            
+        }
+    }
     
     
     private func handleWithError(_ error: Error) {
@@ -49,6 +65,17 @@ class MovieService {
             
             return nil
             
+        }
+    }
+    
+    private func handleWithError(_ data:Data) -> MovieResults? {
+        
+        do {
+            let movieDetail = try JSONDecoder().decode(MovieResults.self, from: data)
+            return movieDetail
+        }catch {
+            print(error)
+            return nil
         }
     }
 }

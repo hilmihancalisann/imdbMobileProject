@@ -49,9 +49,7 @@ final class MovieCell: UICollectionViewCell {
         posterImgaeView = PosterImageView(frame: .zero)
         addSubview(posterImgaeView)
         
-       
-    
-        posterImgaeView.pinToEdgesOf(view: self)
+       posterImgaeView.pinToEdgesOf(view: self)
     }
     
 }

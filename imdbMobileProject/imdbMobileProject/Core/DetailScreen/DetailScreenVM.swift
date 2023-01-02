@@ -30,6 +30,9 @@ extension DetailScrenVM: DetailScreenVMInterFace {
         view?.configureVC()
         view?.configurePosterImageView()
         view?.dowloadPosterImage()
+        view?.configureDTitleLabel()
+        view?.configureDateLabel()
+        view?.configureOverwievLabel()
     }
     
   
